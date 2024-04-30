@@ -1,8 +1,8 @@
 // VARIABLES
-import User from "./User.js";
 import express from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
+import User from "../Models/User.js";
 // ROUTER
 const router = express.Router();
 // REGISTER
@@ -10,12 +10,21 @@ router.post("/register", async (req, res) => {
   try {
     // TOMAR INFORMACION
     const { name, email, password } = req.body;
+    // SI EL USUARIO ESTA REGISTRADO
+    const ususarioExistente = await User.findOne({ email });
+    if (ususarioExistente) {
+      return res.status(409).json({ message: "Usuario ya existente!" });
+    }
+    // CONTRASEÑA CODIFICADA
+    const salt = await bcrypt.genSalt();
+    const hashedPassword = await bcrypt.hash(password, salt);
     // CREAR USUARIO
     const newUser = new User({
       name,
       email,
-      password,
+      password: hashedPassword,
     });
+
     // GUARDAR EL USUARIO
     await newUser.save();
     // ENVIAR MENSAJE DE USUARIO REGISTRADO
@@ -29,3 +38,5 @@ router.post("/register", async (req, res) => {
     });
   }
 });
+
+export default router;

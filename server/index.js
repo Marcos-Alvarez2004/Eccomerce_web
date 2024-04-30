@@ -3,6 +3,8 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+// RUTAS VARIABLES
+import userRoute from "./Routes/user.js";
 // APP VARIABLE
 const app = express();
 // CONFIG DOTENV
@@ -11,6 +13,8 @@ dotenv.config();
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
+// RUTAS CREADAS
+app.use("/auth", userRoute);
 // PUERTO Y SERVER INICIADO
 const PORT = 4000;
 mongoose
