@@ -39,4 +39,31 @@ router.post("/register", async (req, res) => {
   }
 });
 
+// LOGIN
+router.post("/login", async (req, res) => {
+  try {
+    // TOMAR INFORMACION
+    const { email, password } = req.body;
+    // SI EL USUSARIO EXISTE
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(409).json({ message: "El usuario no existe!" });
+    }
+
+    // COMPARAR CONTRASEÑAS
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: "Credentiales invalidas!" });
+    }
+    // GENERAR TOKEN
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+    delete user.password;
+    // RESPUESTA
+    res.status(200).json({ token, user });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
 export default router;
