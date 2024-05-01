@@ -47,9 +47,11 @@ const Register = () => {
   };
   return (
     <div className="flex h-screen">
+      {/* DERECHA */}
       <section className="w-[70vw]">
         <img src={fondo} className="h-full w-full bg-cover" alt="fondo" />
       </section>
+      {/* IZQUIERDA */}
       <section className="w-[30vw] flex justify-center items-center flex-col gap-8">
         <h1 className="text-4xl">Registro</h1>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -112,6 +114,7 @@ const Register = () => {
             Registro
           </button>
         </form>
+        {/* LINK DE LOGIN */}
         <h3 className="text-lg">
           Tenes una cuenta creada?{" "}
           <Link to={"/login"} className="underline text-indigo-500">
