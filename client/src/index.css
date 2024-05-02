@@ -1,8 +1,40 @@
+/* TAILWIND CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+/* FONT */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap");
+/* BODY */
 body {
   background-color: #242424;
   color: #fff;
+  font-family: "Roboto", sans-serif;
+}
+/* LINKS NAVBAR */
+.link span {
+  position: relative;
+}
+
+.link span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background-color: #fff;
+  transition: width 0.4s ease-out;
+}
+
+.link:hover span::after {
+  width: 100%;
+}
+
+.link {
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+
+.menu:has(.link:hover) .link:not(:hover) {
+  opacity: 0.4;
 }
