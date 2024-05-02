@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 // DEPENDENCIAS
 import { Link, useNavigate } from "react-router-dom";
 // ARCHIVOS
-import fondo from "../../public/fondo.jpg";
+import fondo from "/fondo.jpg";
+
+// <a href="https://www.freepik.es/foto-gratis/vista-configuracion-controlador-teclado-juegos-neon-iluminado_29342308.htm#fromView=search&page=1&position=51&uuid=bdc21462-0c78-4377-a971-6e64b7c56bf3">Imagen de freepik</a>
 
 const Register = () => {
   // useState

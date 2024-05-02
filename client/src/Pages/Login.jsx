@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // ARCHIVO
-import fondo from "../../public/fondo.jpg";
+import fondo from "/fondo.jpg";
 import { setLogin } from "../redux/state";
 
 // http://localhost:4000/auth/login
