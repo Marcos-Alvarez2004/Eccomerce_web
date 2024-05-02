@@ -86,7 +86,11 @@ const Login = () => {
       </section>
       {/* IZQUIERDA */}
       <section className="w-[70vw]">
-        <img src={fondo} className="h-full w-full bg-cover" alt="fondo" />
+        <img
+          src={fondo}
+          className="h-full w-full bg-cover bg-center bg-no-repeat"
+          alt="fondo"
+        />
       </section>
     </div>
   );
