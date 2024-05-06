@@ -67,7 +67,7 @@ const Navbar = () => {
         )}
 
         {dropMenu && user && (
-          <div className="flex flex-col gap-4 absolute top-28 bg-black border border-white p-4 rounded-xl menu">
+          <div className="flex flex-col gap-4 absolute top-28 bg-black border border-white p-4 rounded-xl menu z-10">
             <h4 className="font-semibold text-md">
               Usario: <b className="text-fuchsia-500">{user.name}</b>
             </h4>

@@ -15,6 +15,7 @@ const Home = () => {
         <Navbar />
         <Main />
       </main>
+      <h1 className="text-5xl text-center mt-24">Ultimas Novedades</h1>
       <Carrusel />
     </section>
   );
