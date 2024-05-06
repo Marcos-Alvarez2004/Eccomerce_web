@@ -5,6 +5,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Main from "../components/Main";
 import Carrusel from "../components/Carrusel";
+import Footer from "../components/Footer";
 
 const Home = () => {
   return (
@@ -15,8 +16,11 @@ const Home = () => {
         <Navbar />
         <Main />
       </main>
-      <h1 className="text-5xl text-center mt-24">Ultimas Novedades</h1>
+      <h1 className="text-5xl font-bold text-center mt-24">
+        Ultimas Novedades
+      </h1>
       <Carrusel />
+      <Footer />
     </section>
   );
 };

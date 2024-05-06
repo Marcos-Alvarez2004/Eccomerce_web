@@ -20,13 +20,13 @@ const Navbar = () => {
       </div>
       {/* MENU */}
       <nav className="flex gap-x-8 menu">
-        <Link className="link">
+        <Link to={"/"} className="link">
           <span className="text-xl font-normal">Home</span>
         </Link>
         <Link className="link">
           <span className="text-xl font-normal">Acerca de</span>
         </Link>
-        <Link className="link">
+        <Link to={"/products"} className="link">
           <span className="text-xl font-normal">Productos</span>
         </Link>
         <Link className="link">
@@ -54,7 +54,7 @@ const Navbar = () => {
         </div>
 
         {dropMenu && !user && (
-          <div className="flex flex-col gap-4 absolute top-28 bg-black border border-white p-4 rounded-xl menu">
+          <div className="flex flex-col gap-4 absolute top-28 bg-black border border-white p-4 rounded-xl menu z-10">
             <Link className="link" to={"/login"}>
               {" "}
               <span className="text-xl font-normal">Ingresar</span>
@@ -76,6 +76,9 @@ const Navbar = () => {
             </Link>
             <Link className="link">
               <span className="text-md font-normal">Vender producto</span>
+            </Link>
+            <Link className="link">
+              <span className="text-md font-normal">Mis productos</span>
             </Link>
             <Link
               to={"/login"}
