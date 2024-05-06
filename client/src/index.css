@@ -36,3 +36,34 @@ body {
 .menu:has(.link:hover) .link:not(:hover) {
   opacity: 0.4;
 }
+
+/* ANIMACION HOVER */
+.border-animation::before {
+  position: absolute;
+  content: "";
+  width: 50%;
+  height: 180%;
+  background-color: #f0f;
+  transform: rotate(45deg);
+}
+
+.border-animation:hover::before {
+  animation: animateBorder 2s linear infinite;
+}
+
+@keyframes animateBorder {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.border-animation::after {
+  position: absolute;
+  content: "";
+  inset: 4px;
+  background: #242424;
+  border-radius: 8px;
+}

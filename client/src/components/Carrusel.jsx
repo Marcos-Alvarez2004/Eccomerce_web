@@ -16,15 +16,14 @@ const Carrusel = () => {
   }, []);
 
   var settings = {
-    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
   };
   return (
-    <section className="relative h-[70vh]">
-      <div className="absolute inset-0 w-1/2 mx-auto flex flex-col justify-center">
+    <section className="relative h-screen">
+      <div className="absolute inset-0 w-10/12 mx-auto flex flex-col justify-center">
         <Slider {...settings}>
           {cards.map((card) => (
             <Card

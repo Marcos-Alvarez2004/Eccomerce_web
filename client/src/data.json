@@ -1,58 +1,58 @@
 [
   {
     "id": 1,
-    "name": "Product",
-    "img": "/assets/mouse.jpg",
+    "name": "Mouse Logitech",
+    "img": "/assets/mouseLogitech.jpg",
     "desc": "Mouse desc",
     "price": 20
   },
   {
     "id": 2,
-    "name": "Product2",
-    "img": "/assets/mouse.jpg",
+    "name": "Mouse Redragon",
+    "img": "/assets/mouseRedragon.jpeg",
     "desc": "Mouse desc",
-    "price": 30
+    "price": 25
   },
   {
     "id": 3,
-    "name": "Product3",
-    "img": "/assets/mouse.jpg",
-    "desc": "Mouse desc",
+    "name": "Auriculares HyperX",
+    "img": "/assets/auricularesHyper.jpg",
+    "desc": "Auriculares desc",
     "price": 40
   },
   {
     "id": 4,
-    "name": "Product4",
-    "img": "/assets/mouse.jpg",
-    "desc": "Mouse desc",
-    "price": 40
+    "name": "Auriculares Razer",
+    "img": "/assets/auricularesRazer.jpg",
+    "desc": "Auriculares desc",
+    "price": 45
   },
   {
     "id": 5,
-    "name": "Product5",
-    "img": "/assets/mouse.jpg",
-    "desc": "Mouse desc",
-    "price": 40
+    "name": "Teclado Logitech",
+    "img": "/assets/tecladoLogitech.webp",
+    "desc": "Teclado desc",
+    "price": 50
   },
   {
     "id": 6,
-    "name": "Product6",
-    "img": "/assets/mouse.jpg",
-    "desc": "Mouse desc",
-    "price": 40
+    "name": "Teclado Redragon",
+    "img": "/assets/tecladoRedragon.jpeg",
+    "desc": "Teclado desc",
+    "price": 55
   },
   {
     "id": 7,
-    "name": "Product7",
-    "img": "/assets/mouse.jpg",
-    "desc": "Mouse desc",
-    "price": 40
+    "name": "Monitor Samsung",
+    "img": "/assets/monitorSamsung.jpg",
+    "desc": "Monitor desc",
+    "price": 60
   },
   {
     "id": 8,
-    "name": "Product8",
-    "img": "/assets/mouse.jpg",
-    "desc": "Mouse desc",
-    "price": 40
+    "name": "Monitor LG",
+    "img": "/assets/monitorLg.webp",
+    "desc": "montior desc",
+    "price": 65
   }
 ]
