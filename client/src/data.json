@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Product",
+    "img": "/assets/mouse.jpg",
+    "desc": "Mouse desc",
+    "price": 20
+  },
+  {
+    "id": 2,
+    "name": "Product2",
+    "img": "/assets/mouse.jpg",
+    "desc": "Mouse desc",
+    "price": 30
+  },
+  {
+    "id": 3,
+    "name": "Product3",
+    "img": "/assets/mouse.jpg",
+    "desc": "Mouse desc",
+    "price": 40
+  }
+]
