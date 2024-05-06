@@ -3,6 +3,8 @@ import React from "react";
 
 // ARCHIVOS
 import Navbar from "../components/Navbar";
+import Main from "../components/Main";
+import Carrusel from "../components/Carrusel";
 
 const Home = () => {
   return (
@@ -11,7 +13,9 @@ const Home = () => {
         className={`h-screen bg-cover bg-center bg-no-repeat bg-[url("/fondoHome.jpg")]`}
       >
         <Navbar />
+        <Main />
       </main>
+      <Carrusel />
     </section>
   );
 };
