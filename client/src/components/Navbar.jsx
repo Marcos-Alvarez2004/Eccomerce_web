@@ -16,7 +16,9 @@ const Navbar = () => {
     <header className="flex justify-between items-center p-8 bg-black/80 border-b border-white">
       {/* LOGO */}
       <div>
-        <h1 className="text-4xl">Logo</h1>
+        <Link to={"/"}>
+          <h1 className="text-4xl">Logo</h1>
+        </Link>
       </div>
       {/* MENU */}
       <nav className="flex gap-x-8 menu">
@@ -35,7 +37,7 @@ const Navbar = () => {
       </nav>
 
       {/* USER */}
-      <section className="flex gap-x-4">
+      <section className="flex items-center gap-x-4">
         {/* CARRO */}
         <div className="text-4xl cursor-pointer">
           <PiBag />
@@ -47,14 +49,22 @@ const Navbar = () => {
             onClick={() => setDropMenu(!dropMenu)}
           />
           {!user ? (
-            <CiUser className="text-red-500 bg-black" />
+            <CiUser />
           ) : (
-            <CiUser className="text-green-500 bg-black" />
+            <img
+              className="h-10 border border-white"
+              src={`http://localhost:4000/${user.profileImagePath.replace(
+                "public",
+                ""
+              )}`}
+              alt="foto de perfil"
+              style={{ objectFit: "cover", borderRadius: "50%" }}
+            />
           )}
         </div>
 
         {dropMenu && !user && (
-          <div className="flex flex-col gap-4 absolute top-28 bg-black border border-white p-4 rounded-xl menu z-10">
+          <div className="flex flex-col gap-4 absolute top-32 bg-black border border-white p-4 rounded-xl menu z-10">
             <Link className="link" to={"/login"}>
               {" "}
               <span className="text-xl font-normal">Ingresar</span>
@@ -67,7 +77,7 @@ const Navbar = () => {
         )}
 
         {dropMenu && user && (
-          <div className="flex flex-col gap-4 absolute top-28 bg-black border border-white p-4 rounded-xl menu z-10">
+          <div className="flex flex-col gap-4 absolute top-32 bg-black border border-white p-4 rounded-xl menu z-10">
             <h4 className="font-semibold text-md">
               Usario: <b className="text-fuchsia-500">{user.name}</b>
             </h4>

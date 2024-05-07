@@ -14,10 +14,10 @@ dotenv.config();
 app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
-// RUTAS CREADAS
+// * RUTAS CREADAS
 app.use("/auth", userRoute);
 app.use("/product", productsRute);
-// PUERTO Y SERVER INICIADO
+// * PUERTO Y SERVER INICIADO
 const PORT = 4000;
 mongoose
   .connect(process.env.MONGO_URI, {

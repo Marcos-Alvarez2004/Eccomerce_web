@@ -113,28 +113,34 @@ const Register = () => {
             placeholder="Confirmar contraseña"
           />
           {!passwordMatch && (
-            <p className="text-red-500">La contraseñas no son iguales!</p>
+            <div className="text-red-500">La contraseñas no son iguales!</div>
           )}
           {/* SUBIDA DE FOTO DE PERFIL */}
           <input
             type="file"
             id="image"
             name="profileImage"
-            accept="image/*"
             style={{ display: "none" }}
+            accept="image/*"
             onChange={handleChange}
             required
           />
-          <label htmlFor="image">
-            <img src={upload} alt="Agregar" />
-            <p>Agregar su foto de perfil</p>
+          <label
+            htmlFor="image"
+            className="flex flex-col justify-center gap-2 cursor-pointer text-white text-sm"
+          >
+            <div className="bg-red-500 p-2 text-center rounded">
+              AGREGAR SU FOTO DE PERFIL
+            </div>
           </label>
           {formData.profileImage && (
-            <img
-              src={URL.createObjectURL(formData.profileImage)}
-              alt="Agregar foto"
-              style={{ maxWidth: "80px" }}
-            />
+            <div className="mx-auto bg-white border-2 border-white w-40 h-40">
+              <img
+                src={URL.createObjectURL(formData.profileImage)}
+                alt="Agregar foto"
+                className="w-full h-full object-cover"
+              />
+            </div>
           )}
           <button
             type="submit"
