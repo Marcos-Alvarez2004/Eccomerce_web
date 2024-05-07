@@ -1,15 +1,36 @@
-// VARIABLES
+// DEPENDENCIAS
 import express from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
+import multer from "multer";
+// ARCHIVOS
 import User from "../Models/User.js";
 // ROUTER
 const router = express.Router();
+// CONFIGURACION MULTER PARA ARCHIVOS UPLOAD
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "public/uploads/"); // ALMACENAMIENTO DE ARCHIVOS SUBIDOS IN LA CARPETA "UPLOAD"
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname); // USAR EL NOMBRE ORIGINAL
+  },
+});
+// VARIABLE UPLOAD
+const upload = multer({ storage });
 // REGISTER
-router.post("/register", async (req, res) => {
+router.post("/register", upload.single("profileImage"), async (req, res) => {
   try {
     // TOMAR INFORMACION
     const { name, email, password } = req.body;
+    // LA IMAGEN SUBIDA ES UNA VARIABLE DE REQ.FILE
+    const profileImage = req.file;
+
+    if (!profileImage) {
+      return res.status(400).send("No se subio ninguna imagen!");
+    }
+    // RUTA DE LA IMAGEN SUBIDA
+    const profileImagePath = profileImage.path;
     // SI EL USUARIO ESTA REGISTRADO
     const ususarioExistente = await User.findOne({ email });
     if (ususarioExistente) {
@@ -23,6 +44,7 @@ router.post("/register", async (req, res) => {
       name,
       email,
       password: hashedPassword,
+      profileImagePath,
     });
 
     // GUARDAR EL USUARIO

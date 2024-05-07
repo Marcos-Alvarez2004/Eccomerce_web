@@ -4,40 +4,51 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // ARCHIVOS
 import fondo from "/fondo.jpg";
+import upload from "/upload.png";
 
 // <a href="https://www.freepik.es/foto-gratis/vista-configuracion-controlador-teclado-juegos-neon-iluminado_29342308.htm#fromView=search&page=1&position=51&uuid=bdc21462-0c78-4377-a971-6e64b7c56bf3">Imagen de freepik</a>
 
 const Register = () => {
-  // useState
+  // useNavigate
   const navigate = useNavigate();
+  // useState
   const [passwordMatch, setPasswordMatch] = useState(true);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    profileImage: null,
+  });
+  // HandleChange
+  const handleChange = (e) => {
+    const { name, value, files } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+      [name]: name === "profileImage" ? files[0] : value,
+    });
+  };
   // useEffect
   useEffect(() => {
-    setPasswordMatch(password === confirmPassword || confirmPassword === "");
+    setPasswordMatch(
+      formData.password === formData.confirmPassword ||
+        formData.confirmPassword === ""
+    );
   });
   // HandleSubmit
   const handleSubmit = async (e) => {
-    const data = {
-      name: name,
-      email: email,
-      password: password,
-      confirmPassword: password,
-    };
-
     e.preventDefault();
     try {
+      const register_form = new FormData();
+
+      for (var key in formData) {
+        register_form.append(key, formData[key]);
+      }
       // FETCH
       const res = await fetch("http://localhost:4000/auth/register", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
+        body: register_form,
       });
 
       if (res.ok) {
@@ -67,10 +78,8 @@ const Register = () => {
             className="rounded border-2 border-zinc-400 p-1 bg-transparent"
             required
             name="name"
-            value={name}
-            onChange={(e) => {
-              setName(e.target.value);
-            }}
+            value={formData.name}
+            onChange={handleChange}
             placeholder="Nombre"
           />
           {/* EMAIL */}
@@ -79,10 +88,8 @@ const Register = () => {
             className="rounded border-2 border-zinc-400 p-1 bg-transparent"
             required
             name="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
+            value={formData.email}
+            onChange={handleChange}
             placeholder="Email"
           />
           {/* CONTRASEÑA */}
@@ -91,10 +98,8 @@ const Register = () => {
             className="rounded border-2 border-zinc-400 p-1 bg-transparent"
             required
             name="password"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
+            value={formData.password}
+            onChange={handleChange}
             placeholder="Contraseña"
           />
           {/* CONFIRMAR CONTRASEÑA */}
@@ -103,14 +108,33 @@ const Register = () => {
             className="rounded border-2 border-zinc-400 p-1 bg-transparent"
             required
             name="confirmPassword"
-            value={confirmPassword}
-            onChange={(e) => {
-              setConfirmPassword(e.target.value);
-            }}
+            value={formData.confirmPassword}
+            onChange={handleChange}
             placeholder="Confirmar contraseña"
           />
           {!passwordMatch && (
             <p className="text-red-500">La contraseñas no son iguales!</p>
+          )}
+          {/* SUBIDA DE FOTO DE PERFIL */}
+          <input
+            type="file"
+            id="image"
+            name="profileImage"
+            accept="image/*"
+            style={{ display: "none" }}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="image">
+            <img src={upload} alt="Agregar" />
+            <p>Agregar su foto de perfil</p>
+          </label>
+          {formData.profileImage && (
+            <img
+              src={URL.createObjectURL(formData.profileImage)}
+              alt="Agregar foto"
+              style={{ maxWidth: "80px" }}
+            />
           )}
           <button
             type="submit"
