@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // ARCHIVOS
 import fondo from "/fondo.jpg";
-import upload from "/upload.png";
 
 // <a href="https://www.freepik.es/foto-gratis/vista-configuracion-controlador-teclado-juegos-neon-iluminado_29342308.htm#fromView=search&page=1&position=51&uuid=bdc21462-0c78-4377-a971-6e64b7c56bf3">Imagen de freepik</a>
 

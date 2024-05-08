@@ -25,7 +25,7 @@ router.post("/register", upload.single("profileImage"), async (req, res) => {
     const { name, email, password } = req.body;
     // LA IMAGEN SUBIDA ES UNA VARIABLE DE REQ.FILE
     const profileImage = req.file;
-
+    // SI LA IMAGEN ESTA CORRECTAMENTE SUBIDA
     if (!profileImage) {
       return res.status(400).send("No se subio ninguna imagen!");
     }

@@ -84,11 +84,11 @@ const Navbar = () => {
             <Link className="link">
               <span className="text-md font-normal">Favoritos</span>
             </Link>
-            <Link className="link">
-              <span className="text-md font-normal">Vender producto</span>
+            <Link to={"/create-product"} className="link">
+              <span className="text-md font-normal">Crear producto</span>
             </Link>
-            <Link className="link">
-              <span className="text-md font-normal">Mis productos</span>
+            <Link to={"/my-public"} className="link">
+              <span className="text-md font-normal">Mis publicaciones</span>
             </Link>
             <Link
               to={"/login"}

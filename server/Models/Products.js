@@ -15,6 +15,10 @@ const productSchema = new moongose.Schema(
       type: Number,
       required: true,
     },
+    productImagePath: {
+      type: String,
+      default: "",
+    },
   },
   {
     timestamps: true,
