@@ -87,7 +87,7 @@ const Navbar = () => {
             <Link to={"/create-product"} className="link">
               <span className="text-md font-normal">Crear producto</span>
             </Link>
-            <Link to={"/my-public"} className="link">
+            <Link to={"/my-products"} className="link">
               <span className="text-md font-normal">Mis publicaciones</span>
             </Link>
             <Link

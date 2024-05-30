@@ -3,14 +3,17 @@ import express from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import multer from "multer";
+import dotenv from "dotenv";
 // ARCHIVOS
 import User from "../Models/User.js";
 // ROUTER
 const router = express.Router();
+// DOTENV
+dotenv.config();
 // CONFIGURACION MULTER PARA ARCHIVOS UPLOAD
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public/uploads/"); // ALMACENAMIENTO DE ARCHIVOS SUBIDOS IN LA CARPETA "UPLOAD"
+    cb(null, "public/uploads/"); // ALMACENAMIENTO DE ARCHIVOS SUBIDOS EN LA CARPETA "UPLOAD"
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname); // USAR EL NOMBRE ORIGINAL

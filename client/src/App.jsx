@@ -6,9 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RegisterPage from "./Pages/Register";
 import HomePage from "./Pages/Home";
 import LoginPage from "./Pages/Login";
-import Products from "./Pages/Products";
 import CreateProduct from "./Pages/CreateProduct";
-import MyPublicPRoduct from "./Pages/MyPublicPRoduct";
 
 const App = () => {
   return (
@@ -20,10 +18,7 @@ const App = () => {
           {/* REGISTRO Y INGRESO */}
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-          {/* RUTAS SOBRE PRODUCTOS */}
-          <Route path="/products" element={<Products />} />
           <Route path="/create-product" element={<CreateProduct />} />
-          <Route path="/my-public" element={<MyPublicPRoduct />} />
         </Routes>
       </BrowserRouter>
     </>

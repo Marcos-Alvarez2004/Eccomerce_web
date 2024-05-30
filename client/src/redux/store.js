@@ -1,5 +1,5 @@
 // REDUXJS/TOOLKIT
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 // REDUX-PERSIST
 import {
   persistStore,
@@ -15,6 +15,10 @@ import {
 import storage from "redux-persist/lib/storage";
 // ARCHIVOS
 import state from "./state";
+
+const reducers = combineReducers({
+  state,
+});
 
 const persistConfig = {
   key: "root",
