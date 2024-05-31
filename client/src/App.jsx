@@ -7,6 +7,7 @@ import RegisterPage from "./Pages/Register";
 import HomePage from "./Pages/Home";
 import LoginPage from "./Pages/Login";
 import CreateProduct from "./Pages/CreateProduct";
+import MyProducts from "./Pages/MyProducts";
 
 const App = () => {
   return (
@@ -18,7 +19,9 @@ const App = () => {
           {/* REGISTRO Y INGRESO */}
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
+          {/* PRODUCTOS */}
           <Route path="/create-product" element={<CreateProduct />} />
+          <Route path="/my-products" element={<MyProducts />} />
         </Routes>
       </BrowserRouter>
     </>
