@@ -14,6 +14,17 @@ class Product {
   getProducts() {
     return axios.get(`${urlBase}/get-products`);
   }
+  deleteProduct(id) {
+    return axios.get(`${urlBase}/delete-product/${id}`);
+  }
+  update(formData) {
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
+    return axios.post(`${urlBase}/update-product`, formData, config);
+  }
 }
 
 export default new Product();

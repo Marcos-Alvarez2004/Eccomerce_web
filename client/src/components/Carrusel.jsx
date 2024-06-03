@@ -30,7 +30,6 @@ const Carrusel = () => {
               key={card.id}
               name={card.name}
               img={card.img}
-              desc={card.desc}
               price={card.price}
             />
           ))}

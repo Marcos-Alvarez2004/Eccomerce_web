@@ -4,55 +4,63 @@
     "name": "Mouse Logitech",
     "img": "/assets/mouseLogitech.jpg",
     "desc": "Mouse desc",
-    "price": 20
+    "price": 20,
+    "category": "Mouses"
   },
   {
     "id": 2,
     "name": "Mouse Redragon",
     "img": "/assets/mouseRedragon.jpeg",
     "desc": "Mouse desc",
-    "price": 25
+    "price": 25,
+    "category": "Mouses"
   },
   {
     "id": 3,
     "name": "Auriculares HyperX",
     "img": "/assets/auricularesHyper.jpg",
     "desc": "Auriculares desc",
-    "price": 40
+    "price": 40,
+    "category": "Auriculares"
   },
   {
     "id": 4,
     "name": "Auriculares Razer",
     "img": "/assets/auricularesRazer.jpg",
     "desc": "Auriculares desc",
-    "price": 45
+    "price": 45,
+    "category": "Auriculares"
   },
   {
     "id": 5,
     "name": "Teclado Logitech",
     "img": "/assets/tecladoLogitech.webp",
     "desc": "Teclado desc",
-    "price": 50
+    "price": 50,
+    "category": "Teclados"
   },
   {
     "id": 6,
     "name": "Teclado Redragon",
     "img": "/assets/tecladoRedragon.jpeg",
     "desc": "Teclado desc",
-    "price": 55
+    "price": 55,
+    "category": "Teclados"
   },
   {
     "id": 7,
     "name": "Monitor Samsung",
     "img": "/assets/monitorSamsung.jpg",
     "desc": "Monitor desc",
-    "price": 60
+    "price": 60,
+    "category": "Monitores"
   },
   {
     "id": 8,
     "name": "Monitor LG",
     "img": "/assets/monitorLg.webp",
     "desc": "montior desc",
-    "price": 65
+    "price": 65,
+    "category": "Monitores"
   }
 ]

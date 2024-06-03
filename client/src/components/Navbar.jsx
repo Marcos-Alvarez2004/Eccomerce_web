@@ -52,7 +52,7 @@ const Navbar = () => {
             <CiUser />
           ) : (
             <img
-              className="h-10 border border-white"
+              className="h-10 w-10 border border-white"
               src={`http://localhost:4000/${user.profileImagePath.replace(
                 "public",
                 ""

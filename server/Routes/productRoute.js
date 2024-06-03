@@ -12,6 +12,8 @@ import multer from "multer";
 import {
   createProduct,
   getProducts,
+  deleteProduct,
+  updateProduct,
 } from "../Controllers/productController.js";
 
 const product_route = express();
@@ -47,5 +49,9 @@ const upload = multer({ storage: storage });
 product_route.post("/create-product", upload.single("image"), createProduct);
 
 product_route.get("/get-products", getProducts);
+
+product_route.get("/delete-product/:id", deleteProduct);
+
+product_route.post("/update-product", upload.single("image"), updateProduct);
 
 export default product_route;
