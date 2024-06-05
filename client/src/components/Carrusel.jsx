@@ -5,8 +5,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 // ARCHIVOS
-import Card from "./Card";
 import data from "../data.json";
+import CardProduct from "./CardProduct";
 
 const Carrusel = () => {
   const [cards, setCards] = useState([]);
@@ -26,7 +26,7 @@ const Carrusel = () => {
       <div className="absolute inset-0 w-10/12 mx-auto flex flex-col justify-center">
         <Slider {...settings}>
           {cards.map((card) => (
-            <Card
+            <CardProduct
               key={card.id}
               name={card.name}
               img={card.img}

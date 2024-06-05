@@ -26,7 +26,6 @@ const App = () => {
           {/* PRODUCTOS DE USER */}
           <Route path="/create-product" element={<CreateProduct />} />
           <Route path="/my-products" element={<MyProducts />} />
-          <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </BrowserRouter>
     </>

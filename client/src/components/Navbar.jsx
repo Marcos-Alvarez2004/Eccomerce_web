@@ -81,9 +81,7 @@ const Navbar = () => {
             <h4 className="font-semibold text-md">
               Usario: <b className="text-fuchsia-500">{user.name}</b>
             </h4>
-            <Link to={"/favorites"} className="link">
-              <span className="text-md font-normal">Favoritos</span>
-            </Link>
+
             <Link to={"/create-product"} className="link">
               <span className="text-md font-normal">Crear producto</span>
             </Link>

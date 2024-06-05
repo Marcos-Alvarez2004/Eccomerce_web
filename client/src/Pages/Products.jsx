@@ -2,11 +2,10 @@
 import React, { useEffect, useState } from "react";
 // ARCHIVOS
 import Navbar from "../components/Navbar";
-import Card from "../components/Card";
 import Footer from "../components/Footer";
 import ButtonFilterCategory from "../components/ButtonFilterCategory";
-import { Link } from "react-router-dom";
 import Favorites from "./Favorites";
+import Card from "../components/Card";
 
 const jsonProducts = [
   {
