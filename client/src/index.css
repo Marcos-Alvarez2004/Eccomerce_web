@@ -67,3 +67,39 @@ body {
   background: #242424;
   border-radius: 8px;
 }
+
+/* favorites */
+.products-list,
+.favorites-list {
+  display: flex;
+  flex-wrap: wrap; /* Ajustar los elementos en el contenedor */
+  gap: 20px;
+}
+
+.product-card,
+.favorite-product {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  width: 150px; /* Ajustar el ancho para una mejor apariencia */
+}
+
+.favorite-btn,
+.remove-favorite-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.favorite-btn.favorite {
+  color: red;
+}
+
+.remove-favorite-btn {
+  color: red;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+}

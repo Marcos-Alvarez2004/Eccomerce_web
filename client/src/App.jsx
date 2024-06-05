@@ -1,5 +1,5 @@
 // REACT
-import React from "react";
+import React, { useState } from "react";
 // DEPENDENCIAS
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // ARCHIVOS
@@ -9,6 +9,7 @@ import LoginPage from "./Pages/Login";
 import CreateProduct from "./Pages/CreateProduct";
 import MyProducts from "./Pages/MyProducts";
 import Product from "./Pages/Products";
+import Favorites from "./Pages/Favorites";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           {/* PRODUCTOS DE USER */}
           <Route path="/create-product" element={<CreateProduct />} />
           <Route path="/my-products" element={<MyProducts />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </BrowserRouter>
     </>
