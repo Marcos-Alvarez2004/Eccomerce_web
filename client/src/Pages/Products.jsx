@@ -6,11 +6,12 @@ import Footer from "../components/Footer";
 import ButtonFilterCategory from "../components/ButtonFilterCategory";
 import Favorites from "./Favorites";
 import Card from "../components/Card";
+import Search from "../components/Search";
 
-const jsonProducts = [
+export const jsonProducts = [
   {
     id: 1,
-    name: "Mouse Logitech",
+    name: "mouse Logitech",
     img: "/assets/mouseLogitech.jpg",
     desc: "Mouse desc",
     price: 20,
@@ -18,7 +19,7 @@ const jsonProducts = [
   },
   {
     id: 2,
-    name: "Mouse Redragon",
+    name: "mouse Redragon",
     img: "/assets/mouseRedragon.jpeg",
     desc: "Mouse desc",
     price: 25,
@@ -26,7 +27,7 @@ const jsonProducts = [
   },
   {
     id: 3,
-    name: "Auriculares HyperX",
+    name: "auriculares HyperX",
     img: "/assets/auricularesHyper.jpg",
     desc: "Auriculares desc",
     price: 40,
@@ -34,7 +35,7 @@ const jsonProducts = [
   },
   {
     id: 4,
-    name: "Auriculares Razer",
+    name: "auriculares Razer",
     img: "/assets/auricularesRazer.jpg",
     desc: "Auriculares desc",
     price: 45,
@@ -42,7 +43,7 @@ const jsonProducts = [
   },
   {
     id: 5,
-    name: "Teclado Logitech",
+    name: "teclado Logitech",
     img: "/assets/tecladoLogitech.webp",
     desc: "Teclado desc",
     price: 50,
@@ -50,7 +51,7 @@ const jsonProducts = [
   },
   {
     id: 6,
-    name: "Teclado Redragon",
+    name: "teclado Redragon",
     img: "/assets/tecladoRedragon.jpeg",
     desc: "Teclado desc",
     price: 55,
@@ -58,7 +59,7 @@ const jsonProducts = [
   },
   {
     id: 7,
-    name: "Monitor Samsung",
+    name: "monitor Samsung",
     img: "/assets/monitorSamsung.jpg",
     desc: "Monitor desc",
     price: 60,
@@ -66,7 +67,7 @@ const jsonProducts = [
   },
   {
     id: 8,
-    name: "Monitor LG",
+    name: "monitor LG",
     img: "/assets/monitorLg.webp",
     desc: "montior desc",
     price: 65,
@@ -136,6 +137,7 @@ const Products = () => {
         ))}
       </section>
       <Favorites favorites={favorites} toggleFavorite={toggleFavorite} />
+      <Search />
       <Footer />
     </>
   );

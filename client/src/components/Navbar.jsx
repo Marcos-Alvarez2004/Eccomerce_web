@@ -7,6 +7,7 @@ import { CiUser, CiMenuKebab } from "react-icons/ci";
 import { useSelector, useDispatch } from "react-redux";
 // ARCHIVOS
 import { setLogout } from "../redux/state";
+import Search from "./Search";
 const Navbar = () => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -38,6 +39,10 @@ const Navbar = () => {
 
       {/* USER */}
       <section className="flex items-center gap-x-4">
+        {/* SEARCH */}
+        {/* <div>
+          <Search />
+        </div> */}
         {/* CARRO */}
         <div className="text-4xl cursor-pointer">
           <PiBag />
