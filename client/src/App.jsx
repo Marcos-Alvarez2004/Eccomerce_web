@@ -10,6 +10,8 @@ import CreateProduct from "./Pages/CreateProduct";
 import MyProducts from "./Pages/MyProducts";
 import Product from "./Pages/Products";
 import Favorites from "./Pages/Favorites";
+import AboutPage from "./Pages/AboutPage";
+import ContactPage from "./Pages/ContactPage";
 
 const App = () => {
   return (
@@ -21,6 +23,11 @@ const App = () => {
           {/* REGISTRO Y INGRESO */}
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
+          {/**  PAGES **/}
+          {/* ACERCA DE */}
+          <Route path="/about" element={<AboutPage />} />
+          {/* CONTACTO */}
+          <Route path="/contact" element={<ContactPage />} />
           {/* PRODUCTOS */}
           <Route path="/products" element={<Product />} />
           {/* PRODUCTOS DE USER */}

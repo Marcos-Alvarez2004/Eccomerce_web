@@ -26,13 +26,13 @@ const Navbar = () => {
         <Link to={"/"} className="link">
           <span className="text-xl font-normal">Home</span>
         </Link>
-        <Link className="link">
+        <Link to={"/about"} className="link">
           <span className="text-xl font-normal">Acerca de</span>
         </Link>
         <Link to={"/products"} className="link">
           <span className="text-xl font-normal">Productos</span>
         </Link>
-        <Link className="link">
+        <Link to={"/contact"} className="link">
           <span className="text-xl font-normal">Contacto</span>
         </Link>
       </nav>
