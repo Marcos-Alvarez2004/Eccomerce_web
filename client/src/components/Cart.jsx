@@ -4,6 +4,7 @@ const Cart = ({
   cartItems,
   incrementQuantity,
   decrementQuantity,
+  removeFromCart,
   handleCheckout,
 }) => {
   const totalPrice = cartItems.reduce(
@@ -34,6 +35,9 @@ const Cart = ({
                     disabled={item.quantity >= 10}
                   >
                     +
+                  </button>
+                  <button onClick={() => removeFromCart(item.id)}>
+                    Eliminar
                   </button>
                 </div>
               </li>

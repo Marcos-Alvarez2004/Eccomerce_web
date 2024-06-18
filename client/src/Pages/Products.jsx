@@ -1,8 +1,6 @@
 // REACT
 import React, { useEffect, useState } from "react";
 // ARCHIVOS
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import ButtonFilterCategory from "../components/ButtonFilterCategory";
 import Favorites from "./Favorites";
 import Card from "../components/Card";
@@ -75,47 +73,13 @@ export const jsonProducts = [
   },
 ];
 
-const Products = ({ addToCart, totalItems }) => {
-  const [products, setProducts] = useState(jsonProducts);
-  const [favorites, setFavorites] = useState([]);
-
-  const toggleFavorite = (id) => {
-    setProducts(
-      products.map((product) =>
-        product.id === id
-          ? { ...product, isFavorite: !product.isFavorite }
-          : product
-      )
-    );
-
-    setFavorites((prevFavorites) => {
-      const isFavorite = prevFavorites.some((product) => product.id === id);
-      if (isFavorite) {
-        return prevFavorites.filter((product) => product.id !== id);
-      } else {
-        const newFavorite = products.find((product) => product.id === id);
-        return [newFavorite, ...prevFavorites];
-      }
-    });
-  };
-
-  // DATA FILTER CATEGORY
-  const allCategories = [
-    "All",
-    ...new Set(jsonProducts.map((e) => e.category)),
-  ];
-  const [categories, setCategories] = useState(allCategories);
-
-  const filterCategory = (category) => {
-    if (category === "All") {
-      setProducts(jsonProducts);
-      return;
-    }
-
-    const dataFiltered = jsonProducts.filter((e) => e.category === category);
-    setProducts(dataFiltered);
-  };
-
+const Products = ({
+  addToCart,
+  categories,
+  filterCategory,
+  products,
+  toggleFavorite,
+}) => {
   return (
     <>
       <div className="text-center mt-20">
@@ -128,18 +92,18 @@ const Products = ({ addToCart, totalItems }) => {
         />
       </div>
       <section className="flex justify-center items-center gap-4 flex-wrap mb-24">
-        {products.map((product) => (
-          <>
+        {products.map((product, index) => (
+          <div key={index}>
             <Card
               key={product.id}
               product={product}
               toggleFavorite={toggleFavorite}
               addToCart={addToCart}
             />
-          </>
+          </div>
         ))}
       </section>
-      <Favorites favorites={favorites} toggleFavorite={toggleFavorite} />
+
       {/* <Search /> */}
     </>
   );

@@ -95,6 +95,9 @@ const Navbar = ({ totalItems }) => {
             <Link to={"/my-products"} className="link">
               <span className="text-md font-normal">Mis publicaciones</span>
             </Link>
+            <Link to={"/favorites"} className="link">
+              <span className="text-md font-normal">Favoritos</span>
+            </Link>
             <Link
               to={"/login"}
               onClick={() => {

@@ -57,6 +57,12 @@ const App = () => {
     );
   };
 
+  const removeFromCart = (productId) => {
+    setCartItems((prevItems) =>
+      prevItems.filter((item) => item.id !== productId)
+    );
+  };
+
   useEffect(() => {
     const total = cartItems.reduce((sum, item) => sum + item.quantity, 0);
     setTotalItems(total);
@@ -65,6 +71,47 @@ const App = () => {
   const handleCheckout = () => {
     setCartItems([]);
     navigate("/success");
+  };
+
+  // FAVORITES  AND CATEGORIES
+  const [products, setProducts] = useState(jsonProducts);
+  const [favorites, setFavorites] = useState([]);
+
+  const toggleFavorite = (id) => {
+    setProducts(
+      products.map((product) =>
+        product.id === id
+          ? { ...product, isFavorite: !product.isFavorite }
+          : product
+      )
+    );
+
+    setFavorites((prevFavorites) => {
+      const isFavorite = prevFavorites.some((product) => product.id === id);
+      if (isFavorite) {
+        return prevFavorites.filter((product) => product.id !== id);
+      } else {
+        const newFavorite = products.find((product) => product.id === id);
+        return [newFavorite, ...prevFavorites];
+      }
+    });
+  };
+
+  // DATA FILTER CATEGORY
+  const allCategories = [
+    "All",
+    ...new Set(jsonProducts.map((e) => e.category)),
+  ];
+  const [categories, setCategories] = useState(allCategories);
+
+  const filterCategory = (category) => {
+    if (category === "All") {
+      setProducts(jsonProducts);
+      return;
+    }
+
+    const dataFiltered = jsonProducts.filter((e) => e.category === category);
+    setProducts(dataFiltered);
   };
 
   return (
@@ -88,11 +135,27 @@ const App = () => {
         {/* PRODUCTOS */}
         <Route
           path="/products"
-          element={<Product addToCart={addToCart} totalItems={totalItems} />}
+          element={
+            <Product
+              addToCart={addToCart}
+              totalItems={totalItems}
+              categories={categories}
+              filterCategory={filterCategory}
+              products={products}
+              toggleFavorite={toggleFavorite}
+            />
+          }
         />
         <Route
           path="/products/:id"
           element={<ProductSelected products={jsonProducts} />}
+        />
+        {/* FAVORITOS */}
+        <Route
+          path="/favorites"
+          element={
+            <Favorites favorites={favorites} toggleFavorite={toggleFavorite} />
+          }
         />
         {/* CARRITO */}
         <Route
@@ -102,6 +165,7 @@ const App = () => {
               cartItems={cartItems}
               incrementQuantity={incrementQuantity}
               decrementQuantity={decrementQuantity}
+              removeFromCart={removeFromCart}
               handleCheckout={handleCheckout}
             />
           }
