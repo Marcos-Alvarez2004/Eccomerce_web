@@ -2,13 +2,13 @@
 import React, { useState } from "react";
 // DEPENDENCIAS
 import { Link } from "react-router-dom";
-import { PiBag } from "react-icons/pi";
 import { CiUser, CiMenuKebab } from "react-icons/ci";
 import { useSelector, useDispatch } from "react-redux";
 // ARCHIVOS
 import { setLogout } from "../redux/state";
 import Search from "./Search";
-const Navbar = () => {
+import CartIcon from "./CartIcon";
+const Navbar = ({ totalItems }) => {
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [dropMenu, setDropMenu] = useState(false);
@@ -45,7 +45,9 @@ const Navbar = () => {
         </div> */}
         {/* CARRO */}
         <div className="text-4xl cursor-pointer">
-          <PiBag />
+          <Link to={"/cart"}>
+            <CartIcon totalItems={totalItems} />
+          </Link>
         </div>
         {/* MENU */}
         <div className="flex justify-center items-center gap-4 text-3xl">

@@ -31,7 +31,6 @@ const CreateProduct = () => {
 
   return (
     <>
-      <Navbar />
       <div>
         <h2>Create Product</h2>
         <form

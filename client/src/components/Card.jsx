@@ -1,7 +1,9 @@
 // REACT
 import React from "react";
+import { Link } from "react-router-dom";
+import ProductSelected from "../Pages/ProductSelected";
 
-const Card = ({ product, toggleFavorite }) => {
+const Card = ({ product, toggleFavorite, addToCart }) => {
   return (
     <div className="w-64 rounded overflow-hidden mx-4 relative border-animation flex justify-center items-center flex-col">
       <main className="z-10 w-full p-1 text-center">
@@ -17,7 +19,10 @@ const Card = ({ product, toggleFavorite }) => {
             <div className="font-bold text-xl">{product.name}</div>
           </div>
           {/* BTN */}
-          <div className="w-full py-8 flex items-center justify-center cursor-pointer">
+          <div
+            onClick={() => addToCart(product)}
+            className="w-full py-8 flex items-center justify-center cursor-pointer"
+          >
             <div className="relative inline-flex items-center justify-start py-3 pl-4 pr-12 overflow-hidden font-semibold shadow text-indigo-500 transition-all duration-150 ease-in-out rounded hover:pl-10 hover:pr-6 bg-gray-50 dark:bg-gray-700 dark:text-white dark:hover:text-gray-200 dark:shadow-none group">
               <span className="absolute bottom-0 left-0 w-full h-1 transition-all duration-150 ease-in-out bg-indigo-500 group-hover:h-full"></span>
               <span className="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
@@ -53,7 +58,7 @@ const Card = ({ product, toggleFavorite }) => {
                 </svg>
               </span>
               <span className="relative w-full text-left transition-colors duration-200 ease-in-out group-hover:text-white dark:group-hover:text-gray-200">
-                COMPRAR
+                AGREGAR A CARRITO
               </span>
             </div>
           </div>
@@ -69,6 +74,11 @@ const Card = ({ product, toggleFavorite }) => {
               onClick={() => toggleFavorite(product.id)}
             >
               &#x2665;
+            </button>
+          </div>
+          <div>
+            <button>
+              <Link to={`/products/${product.id}`}>Ver detalles</Link>
             </button>
           </div>
         </div>

@@ -6,7 +6,6 @@ import AboutImg from "/about.svg";
 const AboutPage = () => {
   return (
     <>
-      <Navbar />
       <section className="h-screen flex justify-center items-center w-1/2 mx-auto">
         <div className="text-center">
           <h1 className="text-4xl font-bold py-4">Acerca de la pagina</h1>
@@ -41,7 +40,6 @@ const AboutPage = () => {
           <img width={"1500px"} src={AboutImg} alt="aboutImg" />
         </div>
       </section>
-      <Footer />
     </>
   );
 };

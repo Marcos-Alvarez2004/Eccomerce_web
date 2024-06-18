@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 import ButtonFilterCategory from "../components/ButtonFilterCategory";
 import Favorites from "./Favorites";
 import Card from "../components/Card";
-import Search from "../components/Search";
+// import Search from "../components/Search";
 
 export const jsonProducts = [
   {
@@ -75,7 +75,7 @@ export const jsonProducts = [
   },
 ];
 
-const Products = () => {
+const Products = ({ addToCart, totalItems }) => {
   const [products, setProducts] = useState(jsonProducts);
   const [favorites, setFavorites] = useState([]);
 
@@ -115,9 +115,9 @@ const Products = () => {
     const dataFiltered = jsonProducts.filter((e) => e.category === category);
     setProducts(dataFiltered);
   };
+
   return (
     <>
-      <Navbar />
       <div className="text-center mt-20">
         <h1 className="text-4xl mb-20">Products</h1>
       </div>
@@ -129,16 +129,18 @@ const Products = () => {
       </div>
       <section className="flex justify-center items-center gap-4 flex-wrap mb-24">
         {products.map((product) => (
-          <Card
-            key={product.id}
-            product={product}
-            toggleFavorite={toggleFavorite}
-          />
+          <>
+            <Card
+              key={product.id}
+              product={product}
+              toggleFavorite={toggleFavorite}
+              addToCart={addToCart}
+            />
+          </>
         ))}
       </section>
       <Favorites favorites={favorites} toggleFavorite={toggleFavorite} />
-      <Search />
-      <Footer />
+      {/* <Search /> */}
     </>
   );
 };

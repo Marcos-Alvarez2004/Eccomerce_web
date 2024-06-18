@@ -30,7 +30,6 @@ const MyProducts = () => {
 
   return (
     <>
-      <Navbar />
       <div>
         <h1>Products</h1>
         {products.data != undefined && products.data.data.length > 0 && (

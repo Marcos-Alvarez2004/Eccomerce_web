@@ -13,14 +13,12 @@ const Home = () => {
       <main
         className={`h-screen bg-cover bg-center bg-no-repeat bg-[url("/fondoHome.jpg")]`}
       >
-        <Navbar />
         <Main />
       </main>
       <h1 className="text-5xl font-bold text-center mt-24">
         Ultimas Novedades
       </h1>
       <Carrusel />
-      <Footer />
     </section>
   );
 };
