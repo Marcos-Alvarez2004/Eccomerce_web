@@ -15,9 +15,10 @@ import ContactPage from "./Pages/ContactPage";
 import ProductSelected from "./Pages/ProductSelected";
 import { jsonProducts } from "./Pages/Products";
 import CartPage from "./Pages/CartPage";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import SuccessPage from "./Pages/SuccessPage";
+import Layout from "./Layout/Layout";
+import Navbar from "./components/Navbar";
+import Void from "./Void/Void";
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -115,69 +116,62 @@ const App = () => {
   };
 
   return (
-    <div>
-      <Navbar totalItems={totalItems} />
+    <>
       <Routes>
-        {/* INICIO */}
-        <Route path="/" element={<HomePage />} />
-        {/* REGISTRO Y INGRESO */}
-        <Route path="/register" element={<RegisterPage />} />
+        {/* Rutas que no muestran Navbar ni Footer */}
         <Route path="/login" element={<LoginPage />} />
-        {/**  PAGES **/}
-        {/* ACERCA DE */}
-        <Route path="/about" element={<AboutPage />} />
-        {/* CONTACTO */}
-        <Route
-          path="/contact"
-          element={<ContactPage />}
-          totalItems={totalItems}
-        />
-        {/* PRODUCTOS */}
-        <Route
-          path="/products"
-          element={
-            <Product
-              addToCart={addToCart}
-              totalItems={totalItems}
-              categories={categories}
-              filterCategory={filterCategory}
-              products={products}
-              toggleFavorite={toggleFavorite}
-            />
-          }
-        />
-        <Route
-          path="/products/:id"
-          element={<ProductSelected products={jsonProducts} />}
-        />
-        {/* FAVORITOS */}
-        <Route
-          path="/favorites"
-          element={
-            <Favorites favorites={favorites} toggleFavorite={toggleFavorite} />
-          }
-        />
-        {/* CARRITO */}
-        <Route
-          path="/cart"
-          element={
-            <CartPage
-              cartItems={cartItems}
-              incrementQuantity={incrementQuantity}
-              decrementQuantity={decrementQuantity}
-              removeFromCart={removeFromCart}
-              handleCheckout={handleCheckout}
-            />
-          }
-        />
-        {/* PRODUCTOS DE USER */}
-        <Route path="/create-product" element={<CreateProduct />} />
-        <Route path="/my-products" element={<MyProducts />} />
-        {/* SUCCESS */}
-        <Route path="/success" element={<SuccessPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/" element={<Void />} />
+
+        {/* Rutas que muestran Navbar y Footer */}
+        <Route element={<Layout totalItems={totalItems} />}>
+          <Route path="/main" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route
+            path="/products"
+            element={
+              <Product
+                addToCart={addToCart}
+                totalItems={totalItems}
+                categories={categories}
+                filterCategory={filterCategory}
+                products={products}
+                toggleFavorite={toggleFavorite}
+              />
+            }
+          />
+          <Route
+            path="/products/:id"
+            element={<ProductSelected products={products} />}
+          />
+          <Route
+            path="/favorites"
+            element={
+              <Favorites
+                favorites={favorites}
+                toggleFavorite={toggleFavorite}
+              />
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <CartPage
+                cartItems={cartItems}
+                incrementQuantity={incrementQuantity}
+                decrementQuantity={decrementQuantity}
+                removeFromCart={removeFromCart}
+                handleCheckout={handleCheckout}
+              />
+            }
+          />
+          <Route path="/create-product" element={<CreateProduct />} />
+          <Route path="/my-products" element={<MyProducts />} />
+          <Route path="/success" element={<SuccessPage />} />
+        </Route>
       </Routes>
-      <Footer />
-    </div>
+    </>
   );
 };
 

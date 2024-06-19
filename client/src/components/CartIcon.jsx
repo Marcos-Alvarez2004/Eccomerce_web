@@ -4,7 +4,7 @@ import { PiBag } from "react-icons/pi";
 const CartIcon = ({ totalItems }) => {
   return (
     <div>
-      <PiBag />
+      <i className="bx bx-shopping-bag"></i>
       {totalItems > 0 && <span>{totalItems}</span>}
     </div>
   );

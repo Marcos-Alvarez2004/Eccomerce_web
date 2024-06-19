@@ -8,6 +8,11 @@ body {
   color: #fff;
   font-family: "Roboto", sans-serif;
 }
+
+.activeLink {
+  color: #f00;
+}
+
 /* LINKS NAVBAR */
 .link span {
   position: relative;

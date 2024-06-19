@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 // DEPENDENCIAS
 import { Link } from "react-router-dom";
-import { CiUser, CiMenuKebab } from "react-icons/ci";
 import { useSelector, useDispatch } from "react-redux";
 // ARCHIVOS
 import { setLogout } from "../redux/state";
@@ -23,7 +22,7 @@ const Navbar = ({ totalItems }) => {
       </div>
       {/* MENU */}
       <nav className="flex gap-x-8 menu">
-        <Link to={"/"} className="link">
+        <Link to={"/main"} className="link">
           <span className="text-xl font-normal">Home</span>
         </Link>
         <Link to={"/about"} className="link">
@@ -51,23 +50,12 @@ const Navbar = ({ totalItems }) => {
         </div>
         {/* MENU */}
         <div className="flex justify-center items-center gap-4 text-3xl">
-          <CiMenuKebab
-            className="cursor-pointer"
-            onClick={() => setDropMenu(!dropMenu)}
-          />
-          {!user ? (
-            <CiUser />
-          ) : (
-            <img
-              className="h-10 w-10 border border-white"
-              src={`http://localhost:4000/${user.profileImagePath.replace(
-                "public",
-                ""
-              )}`}
-              alt="foto de perfil"
-              style={{ objectFit: "cover", borderRadius: "50%" }}
-            />
-          )}
+          <div className="cursor-pointer bg-indigo-600 p-1 rounded">
+            <i
+              onClick={() => setDropMenu(!dropMenu)}
+              className="bx bx-user"
+            ></i>
+          </div>
         </div>
 
         {dropMenu && !user && (
@@ -82,34 +70,68 @@ const Navbar = ({ totalItems }) => {
             </Link>
           </div>
         )}
+        <div
+          className={`${
+            !dropMenu && "hidden"
+          } h-screen w-full fixed top-0 left-0 right-0`}
+          onClick={() => setDropMenu(false)}
+        ></div>
+        <div
+          className={`${
+            dropMenu ? "w-60" : "w-0"
+          } bg-gray-800 h-full absolute top-0 transition-all -right-0 duration-300 overflow-hidden menu z-10`}
+        >
+          <div
+            className={`${
+              !dropMenu && "hidden"
+            } flex flex-col items-center gap-y-4 p-4`}
+          >
+            <i
+              className="bx bx-x ml-auto text-white mb-14 cursor-pointer text-3xl"
+              onClick={() => setDropMenu(false)}
+            ></i>
 
-        {dropMenu && user && (
-          <div className="flex flex-col gap-4 absolute top-32 bg-black border border-white p-4 rounded-xl menu z-10">
             <h4 className="font-semibold text-md">
-              Usario: <b className="text-fuchsia-500">{user.name}</b>
+              <b className="text-fuchsia-500">{user.name}</b>
             </h4>
+            {!user ? (
+              <p>No registrado</p>
+            ) : (
+              <img
+                className="h-full w-full object-cover mb-12"
+                src={`http://localhost:4000/${user.profileImagePath.replace(
+                  "public",
+                  ""
+                )}`}
+                alt="foto de perfil"
+              />
+            )}
 
-            <Link to={"/create-product"} className="link">
-              <span className="text-md font-normal">Crear producto</span>
+            <Link to={"/create-product"} className="link w-[150px] mb-4">
+              <span className="text-md font-semibold">Crear producto</span>
             </Link>
-            <Link to={"/my-products"} className="link">
-              <span className="text-md font-normal">Mis publicaciones</span>
+            <Link to={"/my-products"} className="link w-[150px] mb-4">
+              <span className="text-md font-semibold mb-4">
+                Mis publicaciones
+              </span>
             </Link>
-            <Link to={"/favorites"} className="link">
-              <span className="text-md font-normal">Favoritos</span>
+            <Link to={"/favorites"} className="link w-[150px] mb-4">
+              <span className="text-md font-semibold">Favoritos</span>
             </Link>
+
             <Link
+              className="absolute bottom-0 mb-2"
               to={"/login"}
               onClick={() => {
                 dispatch(setLogout());
               }}
             >
-              <button className="bg-indigo-600 p-2 rounded">
+              <button className="bg-red-500 p-2 rounded w-[130px]">
                 Cerrar Sesion
               </button>
             </Link>
           </div>
-        )}
+        </div>
       </section>
     </header>
   );

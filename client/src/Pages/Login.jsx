@@ -41,7 +41,7 @@ const Login = () => {
             token: loggedIn.token,
           })
         );
-        navigate("/");
+        navigate("/main");
       }
     } catch (err) {
       console.log("Error de ingreso", err.message);
