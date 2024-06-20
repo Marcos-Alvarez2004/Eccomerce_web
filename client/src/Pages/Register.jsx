@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // ARCHIVOS
 import fondo from "/fondo.jpg";
-import notFound from "/not-found.png";
 
 // <a href="https://www.freepik.es/foto-gratis/vista-configuracion-controlador-teclado-juegos-neon-iluminado_29342308.htm#fromView=search&page=1&position=51&uuid=bdc21462-0c78-4377-a971-6e64b7c56bf3">Imagen de freepik</a>
 
@@ -76,16 +75,16 @@ const Register = () => {
         />
       </section>
       {/* IZQUIERDA */}
-      <section className="w-[30vw] flex justify-center items-center flex-col gap-8">
-        <h1 className="text-4xl">Registro</h1>
+      <section className="w-[30vw] flex justify-center items-center flex-col gap-10">
+        <h1 className="font-bold text-3xl text-indigo-500">REGISTRO</h1>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-          <div className="flex gap-4">
+          <div className="flex gap-6">
             {/* NOMBRE */}
             <label htmlFor="name" className="flex flex-col items-center gap-2">
-              Nombre
+              <h4 className="opacity-90 font-semibold">Nombre</h4>
               <input
                 type="text"
-                className="rounded border-2 border-zinc-400 p-1 bg-transparent"
+                className="rounded border-2 border-zinc-400 p-2 bg-transparent"
                 required
                 id="name"
                 name="name"
@@ -98,29 +97,29 @@ const Register = () => {
             </label>
             {/* EMAIL */}
             <label htmlFor="email" className="flex flex-col items-center gap-2">
-              Email
+              <h4 className="opacity-90 font-semibold">Email</h4>
               <input
                 type="email"
-                className="rounded border-2 border-zinc-400 p-1 bg-transparent"
+                className="rounded border-2 border-zinc-400 p-2 bg-transparent"
                 required
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="example@gmail.com"
+                placeholder="Example@gmail.com"
               />
             </label>
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-6">
             {/* CONTRASEÑA */}
             <label
               htmlFor="password"
               className="flex flex-col items-center gap-2"
             >
-              Contraseña
+              <h4 className="opacity-90 font-semibold">Contraseña</h4>
               <input
                 type="password"
-                className="rounded border-2 border-zinc-400 p-1 bg-transparent"
+                className="rounded border-2 border-zinc-400 p-2 bg-transparent"
                 required
                 id="password"
                 name="password"
@@ -136,10 +135,10 @@ const Register = () => {
               htmlFor="confirmPassword"
               className="flex flex-col items-center gap-2"
             >
-              Confirmar Contraseña
+              <h4 className="opacity-90 font-semibold">Confirmar Contraseña</h4>
               <input
                 type="password"
-                className="rounded border-2 border-zinc-400 p-1 bg-transparent"
+                className="rounded border-2 border-zinc-400 p-2 bg-transparent"
                 required
                 name="confirmPassword"
                 value={formData.confirmPassword}
@@ -154,7 +153,7 @@ const Register = () => {
             htmlFor="image"
             className="flex flex-col gap-2 cursor-pointer w-max m-auto"
           >
-            <div className="bg-indigo-700 p-2 rounded">
+            <div className="bg-indigo-700 p-2 rounded mt-8">
               Agregar/Cambiar foto de perfil
             </div>
             <input
@@ -168,7 +167,7 @@ const Register = () => {
             />
           </label>
 
-          <div className="bg-notFound h-[250px] w-[250px] relative mx-auto border border-white">
+          <div className="bg-notFound bg-center bg-no-repeat h-[200px] w-[200px] relative mx-auto border border-white">
             {formData.profileImage && (
               <div className="mx-auto bg-white w-full h-full">
                 <button
@@ -195,9 +194,9 @@ const Register = () => {
           </button>
         </form>
         {/* LINK DE LOGIN */}
-        <h3 className="text-lg">
+        <h3 className="text-md">
           Tenes una cuenta creada?{" "}
-          <Link to={"/"} className="underline text-indigo-400">
+          <Link to={"/"} className="underline text-indigo-400 font-semibold">
             Ingreso
           </Link>
         </h3>
