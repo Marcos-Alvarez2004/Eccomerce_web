@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from "react";
 // DEPENDENCIAS
 import { Routes, Route, useNavigate } from "react-router-dom";
-// ARCHIVOS
+// ? ARCHIVOS
+// PAGES
 import RegisterPage from "./Pages/Register";
 import HomePage from "./Pages/Home";
 import LoginPage from "./Pages/Login";
@@ -16,9 +17,8 @@ import ProductSelected from "./Pages/ProductSelected";
 import { jsonProducts } from "./Pages/Products";
 import CartPage from "./Pages/CartPage";
 import SuccessPage from "./Pages/SuccessPage";
+// LAYOUT
 import Layout from "./Layout/Layout";
-import Navbar from "./components/Navbar";
-import Void from "./Void/Void";
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -119,9 +119,8 @@ const App = () => {
     <>
       <Routes>
         {/* Rutas que no muestran Navbar ni Footer */}
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/" element={<Void />} />
 
         {/* Rutas que muestran Navbar y Footer */}
         <Route element={<Layout totalItems={totalItems} />}>

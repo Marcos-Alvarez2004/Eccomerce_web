@@ -58,22 +58,10 @@ const Navbar = ({ totalItems }) => {
           </div>
         </div>
 
-        {dropMenu && !user && (
-          <div className="flex flex-col gap-4 absolute top-32 bg-black border border-white p-4 rounded-xl menu z-10">
-            <Link className="link" to={"/login"}>
-              {" "}
-              <span className="text-xl font-normal">Ingresar</span>
-            </Link>
-            <Link className="link" to={"/register"}>
-              {" "}
-              <span className="text-xl font-normal">Registrarse</span>
-            </Link>
-          </div>
-        )}
         <div
           className={`${
             !dropMenu && "hidden"
-          } h-screen w-full fixed top-0 left-0 right-0`}
+          } h-screen w-full fixed top-0 left-0 right-0 z-10`}
           onClick={() => setDropMenu(false)}
         ></div>
         <div
@@ -94,18 +82,6 @@ const Navbar = ({ totalItems }) => {
             <h4 className="font-semibold text-md">
               <b className="text-fuchsia-500">{user.name}</b>
             </h4>
-            {!user ? (
-              <p>No registrado</p>
-            ) : (
-              <img
-                className="h-full w-full object-cover mb-12"
-                src={`http://localhost:4000/${user.profileImagePath.replace(
-                  "public",
-                  ""
-                )}`}
-                alt="foto de perfil"
-              />
-            )}
 
             <Link to={"/create-product"} className="link w-[150px] mb-4">
               <span className="text-md font-semibold">Crear producto</span>
@@ -121,7 +97,7 @@ const Navbar = ({ totalItems }) => {
 
             <Link
               className="absolute bottom-0 mb-2"
-              to={"/login"}
+              to={"/"}
               onClick={() => {
                 dispatch(setLogout());
               }}

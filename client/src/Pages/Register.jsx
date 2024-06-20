@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // ARCHIVOS
 import fondo from "/fondo.jpg";
+import notFound from "/not-found.png";
 
 // <a href="https://www.freepik.es/foto-gratis/vista-configuracion-controlador-teclado-juegos-neon-iluminado_29342308.htm#fromView=search&page=1&position=51&uuid=bdc21462-0c78-4377-a971-6e64b7c56bf3">Imagen de freepik</a>
 
@@ -35,6 +36,13 @@ const Register = () => {
         formData.confirmPassword === ""
     );
   });
+  // HandleRemove
+  const handleRemove = () => {
+    setFormData({
+      ...formData,
+      profileImage: null,
+    });
+  };
   // HandleSubmit
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,7 +59,7 @@ const Register = () => {
       });
 
       if (res.ok) {
-        navigate("/login");
+        navigate("/");
       }
     } catch (err) {
       console.log("Registro salio mal!", err.message);
@@ -71,79 +79,116 @@ const Register = () => {
       <section className="w-[30vw] flex justify-center items-center flex-col gap-8">
         <h1 className="text-4xl">Registro</h1>
         <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
-          {/* NOMBRE */}
-          <input
-            type="text"
-            className="rounded border-2 border-zinc-400 p-1 bg-transparent"
-            required
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Nombre"
-          />
-          {/* EMAIL */}
-          <input
-            type="email"
-            className="rounded border-2 border-zinc-400 p-1 bg-transparent"
-            required
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="Email"
-          />
-          {/* CONTRASEÑA */}
-          <input
-            type="password"
-            className="rounded border-2 border-zinc-400 p-1 bg-transparent"
-            required
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="Contraseña"
-          />
-          {/* CONFIRMAR CONTRASEÑA */}
-          <input
-            type="password"
-            className="rounded border-2 border-zinc-400 p-1 bg-transparent"
-            required
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            placeholder="Confirmar contraseña"
-          />
-          {!passwordMatch && (
-            <div className="text-red-500">La contraseñas no son iguales!</div>
-          )}
+          <div className="flex gap-4">
+            {/* NOMBRE */}
+            <label htmlFor="name" className="flex flex-col items-center gap-2">
+              Nombre
+              <input
+                type="text"
+                className="rounded border-2 border-zinc-400 p-1 bg-transparent"
+                required
+                id="name"
+                name="name"
+                minLength="4"
+                maxLength="8"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Min 4 y Max 8 caracteres"
+              />
+            </label>
+            {/* EMAIL */}
+            <label htmlFor="email" className="flex flex-col items-center gap-2">
+              Email
+              <input
+                type="email"
+                className="rounded border-2 border-zinc-400 p-1 bg-transparent"
+                required
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="example@gmail.com"
+              />
+            </label>
+          </div>
+          <div className="flex gap-4">
+            {/* CONTRASEÑA */}
+            <label
+              htmlFor="password"
+              className="flex flex-col items-center gap-2"
+            >
+              Contraseña
+              <input
+                type="password"
+                className="rounded border-2 border-zinc-400 p-1 bg-transparent"
+                required
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                minLength="4"
+                maxLength="8"
+                placeholder="Min 4 y Max 8 caracteres"
+              />
+            </label>
+            {/* CONFIRMAR CONTRASEÑA */}
+            <label
+              htmlFor="confirmPassword"
+              className="flex flex-col items-center gap-2"
+            >
+              Confirmar Contraseña
+              <input
+                type="password"
+                className="rounded border-2 border-zinc-400 p-1 bg-transparent"
+                required
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                placeholder="Confirmar contraseña"
+              />
+            </label>
+          </div>
           {/* SUBIDA DE FOTO DE PERFIL */}
-          <input
-            type="file"
-            id="image"
-            name="profileImage"
-            style={{ display: "none" }}
-            accept="image/*"
-            onChange={handleChange}
-            required
-          />
+
           <label
             htmlFor="image"
-            className="flex flex-col justify-center gap-2 cursor-pointer text-white text-sm"
+            className="flex flex-col gap-2 cursor-pointer w-max m-auto"
           >
-            <div className="bg-red-500 p-2 text-center rounded">
-              AGREGAR SU FOTO DE PERFIL
+            <div className="bg-indigo-700 p-2 rounded">
+              Agregar/Cambiar foto de perfil
             </div>
+            <input
+              type="file"
+              id="image"
+              name="profileImage"
+              style={{ display: "none" }}
+              accept="image/*"
+              onChange={handleChange}
+              required
+            />
           </label>
-          {formData.profileImage && (
-            <div className="mx-auto bg-white border-2 border-white w-40 h-40">
-              <img
-                src={URL.createObjectURL(formData.profileImage)}
-                alt="Agregar foto"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          )}
+
+          <div className="bg-notFound h-[250px] w-[250px] relative mx-auto border border-white">
+            {formData.profileImage && (
+              <div className="mx-auto bg-white w-full h-full">
+                <button
+                  onClick={handleRemove}
+                  className="bg-red-600 absolute -top-6 -right-6 w-6 h-6 rounded-full flex justify-center items-center"
+                >
+                  <i class="bx bx-x font-semibold"></i>
+                </button>
+                <img
+                  src={URL.createObjectURL(formData.profileImage)}
+                  alt="Agregar foto"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
+          </div>
+
           <button
             type="submit"
-            className="bg-indigo-500 p-2 rounded"
+            className="bg-indigo-700 p-2 rounded w-1/2 mx-auto"
             disabled={!passwordMatch}
           >
             Registro
@@ -152,7 +197,7 @@ const Register = () => {
         {/* LINK DE LOGIN */}
         <h3 className="text-lg">
           Tenes una cuenta creada?{" "}
-          <Link to={"/login"} className="underline text-indigo-500">
+          <Link to={"/"} className="underline text-indigo-400">
             Ingreso
           </Link>
         </h3>
