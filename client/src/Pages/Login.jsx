@@ -51,35 +51,54 @@ const Login = () => {
     <div className="flex h-screen">
       {/* DERECHA */}
       <section className="w-[30vw] flex justify-center items-center flex-col gap-8">
-        <h1 className="text-4xl">Login</h1>
-        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+        <h1 className="font-bold text-3xl text-indigo-500">INGRESO</h1>
+        <form className="flex flex-col gap-10" onSubmit={handleSubmit}>
           {/* EMAIL */}
-          <input
-            type="email"
-            className="rounded border-2 border-zinc-400 p-1 bg-transparent"
-            required
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email"
-          />
+          <label htmlFor="email" className="flex flex-col items-center gap-2">
+            <h4 className="opacity-90 font-semibold">Email</h4>
+            <input
+              type="email"
+              className="rounded border-2 border-zinc-400 p-2 bg-transparent"
+              required
+              id="email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Example@gmail.com"
+            />
+          </label>
           {/* CONTRASEÑA */}
-          <input
-            type="password"
-            className="rounded border-2 border-zinc-400 p-1 bg-transparent"
-            required
-            name="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Contraseña"
-          />
-          <button type="submit" className="bg-indigo-500 p-2 rounded">
+          <label
+            htmlFor="password"
+            className="flex flex-col items-center gap-2"
+          >
+            <h4 className="opacity-90 font-semibold">Contraseña</h4>
+            <input
+              type="password"
+              className="rounded border-2 border-zinc-400 p-2 bg-transparent"
+              required
+              id="password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              minLength="4"
+              maxLength="8"
+              placeholder="Min 4 y Max 8 caracteres"
+            />
+          </label>
+          <button
+            type="submit"
+            className="bg-indigo-700 p-2 rounded w-1/2 mx-auto"
+          >
             Ingresar
           </button>
         </form>
         <h3 className="text-lg">
           Todavia no tenes cuenta?{" "}
-          <Link to={"/register"} className="underline text-indigo-500">
+          <Link
+            to={"/register"}
+            className="underline text-indigo-400 font-semibold"
+          >
             Registro
           </Link>
         </h3>

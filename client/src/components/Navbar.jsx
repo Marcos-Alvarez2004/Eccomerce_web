@@ -96,13 +96,13 @@ const Navbar = ({ totalItems }) => {
             </Link>
 
             <Link
-              className="absolute bottom-0 mb-2"
+              className="absolute bottom-0 mb-4"
               to={"/"}
               onClick={() => {
                 dispatch(setLogout());
               }}
             >
-              <button className="bg-red-500 p-2 rounded w-[130px]">
+              <button className="bg-red-600 p-2 rounded hover:bg-red-700">
                 Cerrar Sesion
               </button>
             </Link>
